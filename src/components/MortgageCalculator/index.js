@@ -5,6 +5,12 @@ import "./style.scss";
 const MortgageCalculator = ({ ...props }) => {
 	const formRef = useRef(null);
 
+	const [mortgageAmount, setMortgageAmount] = useState('');
+
+    const [mortgageTerm, setMortgageTerm] = useState('');
+
+    const [interestRate, setInterestRate] = useState('');
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData(formRef.current);
@@ -18,6 +24,32 @@ const MortgageCalculator = ({ ...props }) => {
 			onSubmit={handleSubmit}
 		>
 			{/* TAKE IT AWAY! */}
+			<label> 
+				Mortgage Amount:
+				<input 
+					type = "number"	
+					value = {mortgageAmount}
+					onChange = {(e) => setMortgageAmount(e.target.value)}
+				/>
+			</label>
+
+			<label>
+				Mortgage Term (years): 
+				<input 
+					type = "number"	
+					value = {mortgageTerm}
+					onChange = {(e) => setMortgageTerm(e.target.value)}
+				/>
+			</label>
+
+			<label>
+				Interest Rate (%): 
+				<input 
+					type = "number"	
+					value = {interestRate}
+					onChange = {(e) => setInterestRate(e.target.value)}
+				/>
+			</label>
 		</form>
 	);
 };
