@@ -4,18 +4,20 @@ import "./style.scss";
 
 const MortgageCalculator = ({ ...props }) => {
 	const formRef = useRef(null);
-
 	const [mortgageAmount, setMortgageAmount] = useState('');
-
     const [mortgageTerm, setMortgageTerm] = useState('');
-
     const [interestRate, setInterestRate] = useState('');
+	const [calculationType, setCalculationType] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData(formRef.current);
 		const data = Object.fromEntries(formData.entries());
-		console.log(data);
+		if (calculationType === 'optionRepayment') {
+            console.log('Repayment Calculation:', data);
+        } else if (calculationType === 'optionInterest') {
+            console.log('Interest Only Calculation:', data);
+		}
 	};
 	return (
 		<form
@@ -50,6 +52,29 @@ const MortgageCalculator = ({ ...props }) => {
 					onChange = {(e) => setInterestRate(e.target.value)}
 				/>
 			</label>
+			<div className="radio">
+				<label>
+				Repayment
+					<input 
+						type= "radio"
+						name="calculationType" 
+						value="optionRepayment" 
+						checked={calculationType === 'optionRepayment'}
+                        onChange={() => setCalculationType('optionRepayment')} 
+					/>
+				</label>
+			</div>
+			<div className="radio">
+				<label>
+				Interest Only
+					<input 
+						type="radio" 
+						value="optionInterest"
+						checked={calculationType === 'optionInterest'}
+                        onChange={() => setCalculationType('optionInterest')} 
+					/>
+				</label>
+			</div>
 		</form>
 	);
 };
