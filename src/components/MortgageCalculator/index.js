@@ -9,18 +9,19 @@ const MortgageCalculator = ({ ...props }) => {
 	const [result, setResult] = useState(null);
 	const [resultTerm, setResultTerm] = useState(null);
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		//calculates based on option selected
+	//memoized result
+	const calculatedResult = useMemo(() => {
+		//check for data
+		if(!formRef.current) return {result: null, resultTerm: null};
 		const formData = new FormData(formRef.current);
 		const data = Object.fromEntries(formData.entries());
 		const principal = parseFloat(data.mortgageAmount);
 		const years = parseFloat(data.mortgageTerm);
 		const rate = parseFloat(data.interestRate) / 100; //percent to decimal
 		const calculationType = data.calculationType;
-		//answer to be displayed
-		console.log("Parsed Values:", { principal, years, rate });
-		let calculationResult = 0; 
+
+		let calculationResult = 0;
+		//calculates based on option selected
 		if (calculationType === 'optionRepayment') {
 			calculationResult = (principal * rate / 12) / (1 - Math.pow(1 + rate/12, years * -12));
             console.log('Repayment Calculation:', data);
@@ -28,9 +29,14 @@ const MortgageCalculator = ({ ...props }) => {
 				calculationResult = principal * (rate/12);
 				console.log('Interest Only Calculation:', data);
 		}
-		setResult(calculationResult.toFixed(2));
-		let resultTotal = calculationResult * years
-		setResultTerm(resultTotal.toFixed(2));
+		const resultTotal = calculationResult * years
+		return { result: calculationResult.toFixed(2), resultTerm: resultTotal.toFixed(2)};
+	}, [calculationType]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setResult(calculatedResult.result);
+		setResultTerm(calculatedResult.resultTerm);
 	};
 	return (
 		<div>
@@ -45,9 +51,8 @@ const MortgageCalculator = ({ ...props }) => {
 					<label>
 						<h2>Mortgage Amount</h2>
 						<input 
-							type = "text"	
+							type = "number"	
 							name = "mortgageAmount"
-							pattern="\d*"
 						/>
 					</label>
 				</div>
@@ -55,24 +60,21 @@ const MortgageCalculator = ({ ...props }) => {
 					<label>
 						<h2>Mortgage Term</h2> 
 						<input 
-							type = "text"	
+							type = "number"	
 							name = "mortgageTerm"
-							pattern="\d*"
 						/>
 					</label>
 					<label>
 						<h2>Interest Rate</h2> 
 						<input 
-							type = "text"	
+							type = "number"	
 							name = "interestRate"
-							pattern="\d*"
 						/>
 					</label>
 				</div>
-				<div className="section">
+				<div className="mortgageType">
 					<h2>Mortgage Type</h2>
 					<label>
-						<h3>Repayment</h3>
 						<input 
 							type= "radio"
 							name="calculationType" 
@@ -80,9 +82,9 @@ const MortgageCalculator = ({ ...props }) => {
 							checked={calculationType === 'optionRepayment'}
 							onChange={() => setCalculationType('optionRepayment')} 
 						/>
+						Repayment
 					</label>
 					<label>
-						<h3>Interest Only</h3>
 						<input 
 							type="radio"
 							name="calculationType" 
@@ -90,12 +92,13 @@ const MortgageCalculator = ({ ...props }) => {
 							checked={calculationType === 'optionInterest'}
 							onChange={() => setCalculationType('optionInterest')} 
 						/>
+						Interest Only
 					</label>
 				</div>
 				<div className="submit">
 					<button 
 						type="submit">
-						Calculate
+						Calculate Repayments
 					</button>
 				</div>
 
