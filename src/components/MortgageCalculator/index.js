@@ -41,37 +41,38 @@ const MortgageCalculator = ({ ...props }) => {
 			>
 				{/* TAKE IT AWAY! */}
 				<h1> Mortgage Calculator</h1>
-				<div className="mortgageAmount">
+				<div className="section">
 					<label>
 						<h2>Mortgage Amount</h2>
 						<input 
-							type = "number"	
+							type = "text"	
 							name = "mortgageAmount"
+							pattern="\d*"
 						/>
 					</label>
 				</div>
-				<div className="mortgageTerm">
+				<div className="section">
 					<label>
 						<h2>Mortgage Term</h2> 
 						<input 
-							type = "number"	
+							type = "text"	
 							name = "mortgageTerm"
+							pattern="\d*"
 						/>
 					</label>
-				</div>
-				<div className="interestRate">
 					<label>
 						<h2>Interest Rate</h2> 
 						<input 
-							type = "number"	
+							type = "text"	
 							name = "interestRate"
+							pattern="\d*"
 						/>
 					</label>
 				</div>
-				<div className="mortgageType">
+				<div className="section">
 					<h2>Mortgage Type</h2>
 					<label>
-						Repayment
+						<h3>Repayment</h3>
 						<input 
 							type= "radio"
 							name="calculationType" 
@@ -80,10 +81,8 @@ const MortgageCalculator = ({ ...props }) => {
 							onChange={() => setCalculationType('optionRepayment')} 
 						/>
 					</label>
-				</div>
-				<div className="mortgageType">
 					<label>
-						Interest Only
+						<h3>Interest Only</h3>
 						<input 
 							type="radio"
 							name="calculationType" 
