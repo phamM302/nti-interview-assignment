@@ -21,6 +21,8 @@ const MortgageCalculator = ({ ...props }) => {
 		const calculationType = data.calculationType;
 
 		let calculationResult = 0;
+		//does not update on wrong inputs
+		if (isNaN(principal) || isNaN(years) || isNaN(rate)) return { result: null, resultTerm: null };
 		//calculates based on option selected
 		if (calculationType === 'optionRepayment') {
 			calculationResult = (principal * rate / 12) / (1 - Math.pow(1 + rate/12, years * -12));
