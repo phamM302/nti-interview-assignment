@@ -5,11 +5,9 @@ import "./style.scss";
 const MortgageCalculator = ({ ...props }) => {
 	const formRef = useRef(null);
 	//added the variables needed to calculate
-	const [mortgageAmount, setMortgageAmount] = useState('');
-    const [mortgageTerm, setMortgageTerm] = useState('');
-    const [interestRate, setInterestRate] = useState('');
 	const [calculationType, setCalculationType] = useState('');
 	const [result, setResult] = useState(null);
+	const [resultTerm, setResultTerm] = useState(null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -26,11 +24,13 @@ const MortgageCalculator = ({ ...props }) => {
 		if (calculationType === 'optionRepayment') {
 			calculationResult = (principal * rate / 12) / (1 - Math.pow(1 + rate/12, years * -12));
             console.log('Repayment Calculation:', data);
-        } else if (calculationType === 'optionInterest') {
-			calculationResult = principal * (rate/12);
-            console.log('Interest Only Calculation:', data);
+		} else if (calculationType === 'optionInterest') {
+				calculationResult = principal * (rate/12);
+				console.log('Interest Only Calculation:', data);
 		}
 		setResult(calculationResult.toFixed(2));
+		let resultTotal = calculationResult * years
+		setResultTerm(resultTotal.toFixed(2));
 	};
 	return (
 		<div>
@@ -40,30 +40,36 @@ const MortgageCalculator = ({ ...props }) => {
 				onSubmit={handleSubmit}
 			>
 				{/* TAKE IT AWAY! */}
-				<label> 
-					Mortgage Amount:
-					<input 
-						type = "number"	
-						name = "mortgageAmount"
-					/>
-				</label>
-
-				<label>
-					Mortgage Term (years): 
-					<input 
-						type = "number"	
-						name = "mortgageTerm"
-					/>
-				</label>
-
-				<label>
-					Interest Rate (%): 
-					<input 
-						type = "number"	
-						name = "interestRate"
-					/>
-				</label>
-				<div className="radio">
+				<h1> Mortgage Calculator</h1>
+				<div className="mortgageAmount">
+					<label>
+						<h2>Mortgage Amount</h2>
+						<input 
+							type = "number"	
+							name = "mortgageAmount"
+						/>
+					</label>
+				</div>
+				<div className="mortgageTerm">
+					<label>
+						<h2>Mortgage Term</h2> 
+						<input 
+							type = "number"	
+							name = "mortgageTerm"
+						/>
+					</label>
+				</div>
+				<div className="interestRate">
+					<label>
+						<h2>Interest Rate</h2> 
+						<input 
+							type = "number"	
+							name = "interestRate"
+						/>
+					</label>
+				</div>
+				<div className="mortgageType">
+					<h2>Mortgage Type</h2>
 					<label>
 						Repayment
 						<input 
@@ -75,7 +81,7 @@ const MortgageCalculator = ({ ...props }) => {
 						/>
 					</label>
 				</div>
-				<div className="radio">
+				<div className="mortgageType">
 					<label>
 						Interest Only
 						<input 
@@ -87,20 +93,29 @@ const MortgageCalculator = ({ ...props }) => {
 						/>
 					</label>
 				</div>
-
-				<button 
-					type="submit">
-					Calculate
-				</button>
+				<div className="submit">
+					<button 
+						type="submit">
+						Calculate
+					</button>
+				</div>
 
 			</form>
-			
-			{result && (
-				<div className="result">
-					<h4>Calculated {calculationType === 'optionRepayment' ? 'Repayment' : 'Interest Only'}:</h4>
-					<p>${result} per month</p>
-				</div>
-			)}
+			<div className ="results">
+				<p>
+					Your results are shown below based on the information you provided.
+					To adjust the results, edit the form and click "calculate repayments"
+					again.
+				</p>
+				{result && (
+					<div className="result">
+						<h2>Your monthly repayments</h2>
+						<p>${result}</p>
+						<h2>Total you'll repay over the term</h2>
+						<p>${resultTerm}</p>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };
