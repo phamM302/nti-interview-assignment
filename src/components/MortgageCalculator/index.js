@@ -33,7 +33,7 @@ const MortgageCalculator = ({ ...props }) => {
 			>
 				{/* TAKE IT AWAY! */}
 				<div className="calculation">
-					<div style={{ display: 'flex', alignItems: 'center' }}>
+					<div className= "head" style={{ display: 'flex', alignItems: 'center' }}>
 						<h4 style={{ fontFamily: 'bold' }}>Mortgage Calculator</h4>
 						<button 
 							type="button" onClick={handleClearAll}
@@ -43,14 +43,16 @@ const MortgageCalculator = ({ ...props }) => {
 							/>
 						</button>
 					</div>
-					<label>
-						<h5>Mortgage Amount</h5>
-						<input
-							type="number"
-							name="mortgageAmount"
-						/>
-					</label>
-					<div style={{ display: 'flex', alignItems: 'center' }}>
+					<div className = "mortgageAmount">
+						<label>
+							<h5>Mortgage Amount</h5>
+							<input
+								type="number"
+								name="mortgageAmount"
+							/>
+						</label>
+					</div>
+					<div className = "mortgageTermInt" style={{ display: 'flex', alignItems: 'center' }}>
 						<label>
 							<h5>Mortgage Term</h5>
 							<input
@@ -58,17 +60,18 @@ const MortgageCalculator = ({ ...props }) => {
 								name="mortgageTerm"
 							/>
 						</label>
-
-						<label style={{ marginLeft: 'auto' }}>
-							<h5>Interest Rate</h5>
-							<input
-								type="number"
-								name="interestRate"
-							/>
-						</label>
+						<div className = "interestRate">
+							<label>
+								<h5>Interest Rate</h5>
+								<input
+									type="number"
+									name="interestRate"
+								/>
+							</label>
+						</div>
 					</div>
 					<h5>Mortgage Type</h5>
-					<label style={{ display: 'flex' }}>
+					<label style={{ display: 'flex'}}>
 						<input
 							type="radio"
 							name="calculationType"

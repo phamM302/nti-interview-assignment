@@ -16,22 +16,47 @@
     }
     
     .calculation {
-        font-family: 'medium', sans-serif;  
-        margin-left: 40px;
-        margin-right: 100px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        font-family: 'medium', sans-serif;
+        width: 50%;
+        padding: 5%;
+    }
+    .head {
+        padding-bottom: 5%;
+    }
+    .mortgageAmount {
+        padding-bottom: 5%;
+    }
+    .mortgageTermInt {
+        padding-bottom: 5%;
+    }
+    .interestRate {
+        padding-left: 5%;
     }
     .result {
-        font-family: 'medium', sans-serif;  
-        margin-left: 20px;
-        margin-right: 50px;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        font-family: 'medium', sans-serif;
+        text-align: left;
+        width: 45%;
+        padding-top: 5%;
+        padding-left: 3%;
+          
+    }
+    .result h5 {
+        white-space: nowrap;
+    }
+    .resultEmpty {
+        font-family: 'medium', sans-serif;
+        text-align: center;
+        width: 40%;
+        padding: 5%;  
     }
     input[type="radio"] {
         font-family: 'bold', sans-serif; 
         margin-right: 5px;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
     button {
         padding: 0;
