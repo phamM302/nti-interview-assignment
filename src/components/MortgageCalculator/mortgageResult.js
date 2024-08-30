@@ -13,7 +13,7 @@ const MortgageResult = ({ result, resultTerm }) => {
     }, [result, resultTerm]);
 
     return (
-        <div className="section">
+        <div className="result">
             <p>
                 Your results are shown below based on the information you provided.
                 To adjust the results, edit the form and click "calculate repayments" again.

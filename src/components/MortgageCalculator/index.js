@@ -8,7 +8,7 @@ const MortgageCalculator = ({ ...props }) => {
 	const formRef = useRef(null);
 	//added the variables needed to calculate
 	const [calculationType, setCalculationType] = useState('');
-	const [formData,setFormData] = useState({});
+	const [formData, setFormData] = useState({});
 	const memoizedData = useMemo(() => {
 		return calculateMortgage(formData);
 	}, [formData]);
@@ -27,64 +27,66 @@ const MortgageCalculator = ({ ...props }) => {
 				onSubmit={handleSubmit}
 			>
 				{/* TAKE IT AWAY! */}
-				<h1> Mortgage Calculator</h1>
-				<div className="section">
+				<div className="calculation">
+					<h1 style={{ fontFamily: 'bold' }}> Mortgage Calculator</h1>
 					<label>
 						<h2>Mortgage Amount</h2>
-						<input 
-							type = "number"	
-							name = "mortgageAmount"
+						<input
+							type="number"
+							name="mortgageAmount"
 						/>
 					</label>
-				</div>
-				<div className="section">
-					<label>
-						<h2>Mortgage Term</h2> 
-						<input 
-							type = "number"	
-							name = "mortgageTerm"
-						/>
-					</label>
-					<label>
-						<h2>Interest Rate</h2> 
-						<input 
-							type = "number"	
-							name = "interestRate"
-						/>
-					</label>
-				</div>
-				<div className="section">
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<label>
+							<h2>Mortgage Term</h2>
+							<input
+								type="number"
+								name="mortgageTerm"
+							/>
+						</label>
+	
+						<label>
+							<h2>Interest Rate</h2>
+							<input
+								type="number"
+								name="interestRate"
+							/>
+						</label>
+					</div>
 					<h2>Mortgage Type</h2>
-					<label>
-						<input 
-							type= "radio"
-							name="calculationType" 
-							value="optionRepayment" 
-							checked={calculationType === 'optionRepayment'}
-							onChange={() => setCalculationType('optionRepayment')} 
-						/>
-						Repayment
-					</label>
-					<label>
-						<input 
+					<label style={{ display: 'flex' }}>
+						<input
 							type="radio"
-							name="calculationType" 
+							name="calculationType"
+							value="optionRepayment"
+							checked={calculationType === 'optionRepayment'}
+							onChange={() => setCalculationType('optionRepayment')}
+						/>
+						<span style={{ fontFamily: 'bold' }}>Repayment </span>
+					</label>
+					<label style={{ display: 'flex' }}>
+						<input
+							type="radio"
+							name="calculationType"
 							value="optionInterest"
 							checked={calculationType === 'optionInterest'}
-							onChange={() => setCalculationType('optionInterest')} 
+							onChange={() => setCalculationType('optionInterest')}
 						/>
-						Interest Only
+						<span style={{ fontFamily: 'bold' }}>Interest Only </span>
 					</label>
-				</div>
-				<div className="section">
-					<button 
-						type="submit">
-						Calculate Repayments
-					</button>
+					<div className="calculation">
+						<button
+							type="submit">
+							<img src={`/images/calculatebutton.svg`}
+								alt="Calculate Button"
+							/>
+
+						</button>
+					</div>
 				</div>
 				<MortgageResult result={memoizedData.result} resultTerm={memoizedData.resultTerm} />
 			</form>
-			
+
 		</div>
 	);
 };
