@@ -31,7 +31,7 @@ const MortgageResult = ({ result, resultTerm }) => {
                 <div className="resultEmpty">
                     <img src={`/images/illustration-empty.svg`}
                         alt="Empty Result"></img>
-                    <h4 style={{ fontFamily: 'bold' }}> Results shown here</h4>
+                    <h4> Results shown here</h4>
                     <p>
                         Complete the form and click "calculate repayments" to see what your monthly
                         repayments would be.

@@ -48,90 +48,101 @@ const MortgageCalculator = ({ ...props }) => {
 				onSubmit={handleSubmit}
 			>
 				{/* TAKE IT AWAY! */}
-				<div className="calculation">
-					<div className="head" style={{ display: 'flex', alignItems: 'center' }}>
-						<h4 style={{ fontFamily: 'bold' }}>Mortgage Calculator</h4>
-						<button
-							type="button" onClick={handleClearAll}
-							style={{ marginLeft: 'auto' }}>
-							<img src={`/images/clearall.svg`}
-								alt="Clear Button"
-							/>
-						</button>
-					</div>
-					<div className="mortgageAmount">
-						<label>
-							<h5>Mortgage Amount</h5>
-							<input
-								type="number"
-								name="mortgageAmount"
-							/>
-						</label>
-						<div className="error-container">
-							{errors.mortgageAmount}
-						</div>
-					</div>
-					<div className="mortgageTermInt" style={{ display: 'flex', alignItems: 'center' }}>
-						<label>
-							<h5>Mortgage Term</h5>
-							<input
-								type="number"
-								name="mortgageTerm"
-							/>
-							<div className="error-container">
-								{errors.mortgageTerm}
-							</div>
-						</label>
-						<div className="interestRate">
-							<label>
-								<h5>Interest Rate</h5>
-								<input
-									type="number"
-									name="interestRate"
-								/>
-							</label>
-							<div className="error-container">
-								{errors.interestRate}
-							</div>
-						</div>
-					</div>
-					<h5>Mortgage Type</h5>
-					<label style={{ display: 'flex' }}>
-						<input
-							type="radio"
-							name="calculationType"
-							value="optionRepayment"
-							checked={calculationType === 'optionRepayment'}
-							onChange={() => setCalculationType('optionRepayment')}
-						/>
-						<span style={{ fontFamily: 'bold' }}>Repayment </span>
-					</label>
-					<label style={{ display: 'flex' }}>
-						<input
-							type="radio"
-							name="calculationType"
-							value="optionInterest"
-							checked={calculationType === 'optionInterest'}
-							onChange={() => setCalculationType('optionInterest')}
-						/>
-						<span style={{ fontFamily: 'bold' }}>Interest Only </span>
-					</label>
-					<div className="error-container">
-						{errors.calculationType}
-					</div>
-					<div className="calcButton">
-						<button
-							type="submit">
-							<img src={`/images/calculatebutton.svg`}
-								alt="Calculate Button"
-							/>
+				<div className="cointainer">
+					<div class="row">
+						<div className="col-md-6 col-12 d-flex flex-column">
+							<div className="box flex-grow-1">
+								<div className="head" style={{ display: 'flex', alignItems: 'center' }}>
+									<h4>Mortgage Calculator</h4>
+									<button
+										type="button" onClick={handleClearAll}
+										style={{ marginLeft: 'auto' }}>
+										<img src={`/images/clearall.svg`}
+											alt="Clear Button"
+										/>
+									</button>
+								</div>
+								<div className="mortgageAmount">
+									<label>
+										<h5>Mortgage Amount</h5>
+										<input
+											type="number"
+											name="mortgageAmount"
+										/>
+									</label>
+									<div className="error-container">
+										{errors.mortgageAmount}
+									</div>
+								</div>
+								<div className="mortgageTermInt" style={{ display: 'flex', alignItems: 'center' }}>
+									<label>
+										<h5>Mortgage Term</h5>
+										<input
+											type="number"
+											name="mortgageTerm"
+										/>
+										<div className="error-container">
+											{errors.mortgageTerm}
+										</div>
+									</label>
+									<div className="interestRate" style={{ marginLeft: 'auto' }}>
+										<label>
+											<h5>Interest Rate</h5>
+											<input
+												type="number"
+												name="interestRate"
+											/>
+										</label>
+										<div className="error-container">
+											{errors.interestRate}
+										</div>
+									</div>
+								</div>
+								<div className="mortgageType">
+									<h5>Mortgage Type</h5>
+									<label style={{ display: 'flex' }}>
+										<input
+											type="radio"
+											name="calculationType"
+											value="optionRepayment"
+											checked={calculationType === 'optionRepayment'}
+											onChange={() => setCalculationType('optionRepayment')}
+										/>
+										<span>Repayment </span>
+									</label>
+									<label style={{ display: 'flex' }}>
+										<input
+											type="radio"
+											name="calculationType"
+											value="optionInterest"
+											checked={calculationType === 'optionInterest'}
+											onChange={() => setCalculationType('optionInterest')}
+										/>
+										<span>Interest Only </span>
+									</label>
+									<div className="error-container">
+										{errors.calculationType}
+									</div>
+								</div>
+								<div className="calcButton">
+									<button
+										type="submit">
+										<img src={`/images/calculatebutton.svg`}
+											alt="Calculate Button"
+										/>
 
-						</button>
+									</button>
+								</div>
+							</div>
+						</div>
+						<div className="col-md-6 col-12 d-flex flex-column">
+							<div className="box flex-grow-1">
+								<MortgageResult result={memoizedData.result} resultTerm={memoizedData.resultTerm} />
+							</div>
+						</div>
 					</div>
 				</div>
-				<MortgageResult result={memoizedData.result} resultTerm={memoizedData.resultTerm} />
 			</form>
-
 		</div>
 	);
 };

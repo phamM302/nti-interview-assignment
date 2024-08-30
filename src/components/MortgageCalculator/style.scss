@@ -3,6 +3,11 @@
     min-height: 606px;
 
     // Be sure to nest any custom classes on child elements to avoid conflicts
+    .row {
+        min-height: 100%;
+    }
+    
+
     @font-face {
         font-family: 'medium';
         src: url('/fonts/PlusJakartaSans-Medium.ttf') format('truetype');
@@ -17,41 +22,50 @@
         font-style: normal;
     }
 
-    .calculation {
-        font-family: 'medium', sans-serif;
-        width: 50%;
-        padding: 5%;
-    }
-
     .head {
-        padding-bottom: 10%;
+        padding: 10%;
     }
-    .calculation h5 {
-        color: #4E6E7E;
-    }
-    .calculation span, h4 {
-        color:#133041;
+    
+    .head h4 {
+        color: #133041;;
+        font-family: 'bold';
     }
 
     .mortgageAmount {
-        padding-bottom: 10%;
+        padding-left: 10%;
+        color: #4E6E7E;
     }
 
     .mortgageTermInt {
-        padding-bottom: 10%;
+        padding-left: 10%;
+        color: #4E6E7E;
     }
 
     .interestRate {
-        padding-left: 5%;
+        padding: 5%;
+    }
+
+    .mortgageType {
+        color: #4E6E7E;
+        padding-left: 10%;
+        padding-bottom: 10%;
+    }
+
+    .mortgageType span {
+        color:#133041;
+        font-family: 'bold';
+    }
+
+    .calcButton {
+        padding-left: 10%;
     }
 
     .result {
         font-family: 'medium', sans-serif;
         text-align: left;
-        width: 45%;
-        padding-top: 5%;
-        padding-left: 3%;
         background-color: #133041;
+        min-height: 100%;
+        border-radius: 0px 15px 15px 75px;
     }
 
     .result h1 {
@@ -75,10 +89,13 @@
     .resultEmpty {
         font-family: 'medium', sans-serif;
         text-align: center;
-        width: 40%;
-        padding: 5%;
+        min-height: 100%;
         color: white;
         background-color: #133041;
+        padding-top: 30%;
+        padding-left: 5%;
+        padding-right: 5%;
+        border-radius: 0px 15px 15px 75px;
     }
 
     .resultEmpty p {
@@ -105,10 +122,11 @@
     }
 
     .calcButton {
-        padding-top: 25%;
+        
     }
 
     .error-container {
+        font-family: 'medium', sans-serif;
         height: 20px;
         color: red;
         font-size: 0.8rem;
