@@ -12,18 +12,34 @@ const MortgageCalculator = ({ ...props }) => {
 	const memoizedData = useMemo(() => {
 		return calculateMortgage(formData);
 	}, [formData]);
+	const [errors, setErrors] = useState({});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const formData = new FormData(formRef.current);
 		const data = Object.fromEntries(formData.entries());
 		setFormData(data);
+
+		const newErrors = {};
+		if (!data.mortgageAmount) newErrors.mortgageAmount = "This field is required";
+		if (!data.mortgageTerm) newErrors.mortgageTerm = "This field is required";
+		if (!data.interestRate) newErrors.interestRate = "This field is required";
+		if (!calculationType) newErrors.calculationType = "This field is required";
+
+		if (Object.keys(newErrors).length > 0) {
+			setErrors(newErrors);
+			return;
+		}
+
+		setErrors({});
 	};
-	const handleClearAll = () => {
+	const handleClearAll = useCallback(() => {
 		if (formRef.current) {
 			formRef.current.reset();
 		}
-	};
+		setCalculationType('');
+		setErrors({});
+	}, []);;
 	return (
 		<div>
 			<form
@@ -51,6 +67,9 @@ const MortgageCalculator = ({ ...props }) => {
 								name="mortgageAmount"
 							/>
 						</label>
+						<div className="error-container">
+							{errors.mortgageAmount}
+						</div>
 					</div>
 					<div className = "mortgageTermInt" style={{ display: 'flex', alignItems: 'center' }}>
 						<label>
@@ -59,6 +78,9 @@ const MortgageCalculator = ({ ...props }) => {
 								type="number"
 								name="mortgageTerm"
 							/>
+							<div className="error-container">
+								{errors.mortgageTerm}
+							</div>
 						</label>
 						<div className = "interestRate">
 							<label>
@@ -68,6 +90,9 @@ const MortgageCalculator = ({ ...props }) => {
 									name="interestRate"
 								/>
 							</label>
+							<div className="error-container">
+								{errors.interestRate}
+							</div>
 						</div>
 					</div>
 					<h5>Mortgage Type</h5>
@@ -91,7 +116,10 @@ const MortgageCalculator = ({ ...props }) => {
 						/>
 						<span style={{ fontFamily: 'bold' }}>Interest Only </span>
 					</label>
-					<div className="calculation">
+					<div className="error-container">
+						{errors.calculationType}
+					</div>
+					<div className="calcButton">
 						<button
 							type="submit">
 							<img src={`/images/calculatebutton.svg`}

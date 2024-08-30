@@ -4,7 +4,7 @@ const calculateMortgage = (data) => {
 	const rate = parseFloat(data.interestRate) / 100; // percent to decimal
 	const calculationType = data.calculationType;
 
-	if (isNaN(principal) || isNaN(years) || isNaN(rate)) {
+	if (isNaN(principal) || isNaN(years) || isNaN(rate) || !calculationType) {
 		return { result: null, resultTerm: null };
 	}
 
