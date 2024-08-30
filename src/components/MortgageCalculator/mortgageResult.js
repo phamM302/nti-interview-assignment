@@ -5,7 +5,7 @@ const MortgageResult = ({ result, resultTerm }) => {
         if (result) {
             const memoizedResult = useMemo(() => {
                 return (
-                    <div className="result">
+                    <div className="resultBox">
                         <h5>Your monthly repayments</h5>
                         <h1>${result}</h1>
                         <h5>Total you'll repay over the term</h5>
