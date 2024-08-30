@@ -49,7 +49,7 @@ const MortgageCalculator = ({ ...props }) => {
 			>
 				{/* TAKE IT AWAY! */}
 				<div className="cointainer">
-					<div class="row">
+					<div className="row">
 						<div className="col-md-6 col-12 d-flex flex-column">
 							<div className="box flex-grow-1">
 								<div className="head" style={{ display: 'flex', alignItems: 'center' }}>
