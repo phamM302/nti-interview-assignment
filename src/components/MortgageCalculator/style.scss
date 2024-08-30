@@ -1,6 +1,7 @@
 .mortgage-calculator {
     max-width: 1008px;
     min-height: 606px;
+
     // Be sure to nest any custom classes on child elements to avoid conflicts
     @font-face {
         font-family: 'medium';
@@ -8,56 +9,93 @@
         font-weight: normal;
         font-style: normal;
     }
+
     @font-face {
         font-family: 'bold';
         src: url('/fonts/PlusJakartaSans-Bold.ttf') format('truetype');
         font-weight: normal;
         font-style: normal;
     }
-    
+
     .calculation {
         font-family: 'medium', sans-serif;
         width: 50%;
         padding: 5%;
     }
+
     .head {
         padding-bottom: 10%;
     }
+    .calculation h5 {
+        color: #4E6E7E;
+    }
+    .calculation span, h4 {
+        color:#133041;
+    }
+
     .mortgageAmount {
         padding-bottom: 10%;
     }
+
     .mortgageTermInt {
         padding-bottom: 10%;
     }
+
     .interestRate {
         padding-left: 5%;
     }
+
     .result {
         font-family: 'medium', sans-serif;
         text-align: left;
         width: 45%;
         padding-top: 5%;
         padding-left: 3%;
-          
+        background-color: #133041;
     }
+
+    .result h1 {
+        color: #D8DB2F;
+        font-size: 3.8rem;
+    }
+
+    .result h4 {
+        color: white;
+    }
+
     .result h5 {
         white-space: nowrap;
+        color: #6B94A8;
     }
+
+    .result p {
+        color: #6B94A8;
+    }
+
     .resultEmpty {
         font-family: 'medium', sans-serif;
         text-align: center;
         width: 40%;
-        padding: 5%;  
+        padding: 5%;
+        color: white;
+        background-color: #133041;
     }
+
+    .resultEmpty p {
+        color: #6B94A8;
+    }
+
     input[type="radio"] {
-        font-family: 'bold', sans-serif; 
+        font-family: 'bold', sans-serif;
         margin-right: 5px;
     }
+
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
+
     button {
         padding: 0;
         border: none;
@@ -65,9 +103,11 @@
         stroke: none;
         outline: none;
     }
+
     .calcButton {
         padding-top: 25%;
     }
+
     .error-container {
         height: 20px;
         color: red;

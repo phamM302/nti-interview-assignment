@@ -7,10 +7,11 @@ const MortgageResult = ({ result, resultTerm }) => {
                 return (
                     <div className="result">
                         <h5>Your monthly repayments</h5>
-                        <p>${result}</p>
+                        <h1>${result}</h1>
                         <h5>Total you'll repay over the term</h5>
-                        <p>${resultTerm}</p>
+                        <h4>${resultTerm}</h4>
                     </div>
+
                 );
             }, [result, resultTerm]);
 
@@ -29,7 +30,7 @@ const MortgageResult = ({ result, resultTerm }) => {
             return (
                 <div className="resultEmpty">
                     <img src={`/images/illustration-empty.svg`}
-                    alt="Empty Result"></img>
+                        alt="Empty Result"></img>
                     <h4 style={{ fontFamily: 'bold' }}> Results shown here</h4>
                     <p>
                         Complete the form and click "calculate repayments" to see what your monthly
