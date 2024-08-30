@@ -28,7 +28,6 @@
 
     .head h4 {
         color: #133041;
-        ;
         font-family: 'bold';
     }
 
@@ -51,10 +50,12 @@
         padding-left: 10%;
         padding-bottom: 10%;
     }
+    
 
     .mortgageType span {
         color: #133041;
         font-family: 'bold';
+        cursor: pointer;
     }
 
     .calcButton {
@@ -146,12 +147,17 @@
     input[type="radio"] {
         font-family: 'bold', sans-serif;
         margin-right: 5px;
+        cursor: pointer;
     }
 
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+
+    input[type="number"] {
+        cursor: pointer;
     }
 
     button {
@@ -161,8 +167,6 @@
         stroke: none;
         outline: none;
     }
-
-    .calcButton {}
 
     .error-container {
         font-family: 'medium', sans-serif;
