@@ -34,6 +34,33 @@
     .mortgageAmount {
         padding-left: 10%;
         color: #4E6E7E;
+        position: relative;
+        width: fit-content;
+    }
+
+    .inputMortgageAmount {
+        font-family: 'bold';
+        color: #133041;
+        width: 137.5%;
+        height: 40px; 
+        font-size: 20px; 
+        padding: 0px 30px; 
+        border-radius: 4px, 4px, 4px, 4px;
+        border: 1px solid #6B94A8;
+        text-align: left;
+    }
+
+    .prefixMortgageAmount {
+        font-family: 'bold';
+        position: absolute;
+        top: 56.5%;
+        left: 50px;
+        transform: translateY(-50%);
+        background-color: #E4F4FD;
+        padding: 4px 5px;
+        border-radius: 4px 4px 4px 4px;
+        font-size: 20px;
+        z-index: 1;
     }
 
     .mortgageTermInt {
@@ -41,8 +68,52 @@
         color: #4E6E7E;
     }
 
+    .mortgageTerm {
+        position: relative;
+        width: fit-content;
+    }
+
+    .inputTermInt {
+        font-family: 'bold';
+        color: #133041;
+        width: 100%;
+        height: 40px; 
+        font-size: 20px; 
+        padding: 0 10px; 
+        border-radius: 4px, 4px, 4px, 4px;
+        border: 1px solid #6B94A8;
+    }
+
+    .suffixMortgageTerm {
+        font-family: 'bold';
+        position: absolute;
+        top: 56.5%;
+        right: 1px;
+        transform: translateY(-50%);
+        background-color: #E4F4FD;
+        padding: 4px 6px;
+        border-radius: 4px 4px 4px 4px;
+        font-size: 20px;
+        z-index: 1;
+    }
+
     .interestRate {
         padding: 5%;
+        position: relative;
+        width: fit-content;
+    }
+
+    .suffixInterestRate {
+        font-family: 'bold';
+        position: absolute;
+        top: 54%;
+        right: 23px;
+        transform: translateY(-50%);
+        background-color: #E4F4FD;
+        padding: 4px 6px;
+        border-radius: 4px 4px 4px 4px;
+        font-size: 20px;
+        z-index: 1;
     }
 
     .mortgageType {
@@ -50,7 +121,7 @@
         padding-left: 10%;
         padding-bottom: 10%;
     }
-    
+
 
     .mortgageType span {
         color: #133041;
@@ -86,8 +157,9 @@
     }
 
     .resultBox h5 {
-        padding-top: 10%; /* Adjust as needed */
+        padding-top: 10%;
     }
+
     .resultBox::before {
         content: '';
         position: absolute;
@@ -144,9 +216,39 @@
         color: #6B94A8;
     }
 
-    input[type="radio"] {
+    .radioRepayment {
         font-family: 'bold', sans-serif;
-        margin-right: 5px;
+        font-size: 20px;
+        border: 1px solid #6B94A8;
+        border-radius: 8px; 
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .radioRepayment:hover {
+        border-color: #D8DB2F;
+    }
+
+    .radioInterest {
+        font-size: 20px;
+        border: 1px solid #6B94A8;
+        border-radius: 8px; 
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .radioInterest:hover {
+        border-color: #D8DB2F;
+    }
+
+    input[type="radio"] {
+        transform: scale(1.5);
+        margin-left: 10px;
+        margin-right: 20px;
         cursor: pointer;
     }
 
@@ -158,6 +260,10 @@
 
     input[type="number"] {
         cursor: pointer;
+    }
+
+    .calcButton {
+        padding-bottom: 50px;
     }
 
     button {

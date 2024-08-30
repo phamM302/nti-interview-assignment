@@ -68,7 +68,9 @@ const MortgageCalculator = ({ ...props }) => {
 										<input
 											type="number"
 											name="mortgageAmount"
+											class="inputMortgageAmount"
 										/>
+										<span class="prefixMortgageAmount">$</span>
 									</label>
 									<div className="error-container">
 										{errors.mortgageAmount}
@@ -76,13 +78,17 @@ const MortgageCalculator = ({ ...props }) => {
 								</div>
 								<div className="mortgageTermInt" style={{ display: 'flex', alignItems: 'center' }}>
 									<label>
-										<h5>Mortgage Term</h5>
-										<input
-											type="number"
-											name="mortgageTerm"
-										/>
-										<div className="error-container">
-											{errors.mortgageTerm}
+										<div className="mortgageTerm">
+											<h5>Mortgage Term</h5>
+											<input
+												type="number"
+												name="mortgageTerm"
+												class="inputTermInt"
+											/>
+											<div className="error-container">
+												{errors.mortgageTerm}
+											</div>
+											<span class="suffixMortgageTerm">years</span>
 										</div>
 									</label>
 									<div className="interestRate" style={{ marginLeft: 'auto' }}>
@@ -91,35 +97,41 @@ const MortgageCalculator = ({ ...props }) => {
 											<input
 												type="number"
 												name="interestRate"
+												class="inputTermInt"
 											/>
+											<span class="suffixInterestRate">%</span>
 										</label>
 										<div className="error-container">
 											{errors.interestRate}
 										</div>
 									</div>
 								</div>
-								<div className="mortgageType">
+								<div className= "mortgageType">
 									<h5>Mortgage Type</h5>
-									<label style={{ display: 'flex' }}>
-										<input
-											type="radio"
-											name="calculationType"
-											value="optionRepayment"
-											checked={calculationType === 'optionRepayment'}
-											onChange={() => setCalculationType('optionRepayment')}
-										/>
-										<span>Repayment </span>
-									</label>
-									<label style={{ display: 'flex' }}>
-										<input
-											type="radio"
-											name="calculationType"
-											value="optionInterest"
-											checked={calculationType === 'optionInterest'}
-											onChange={() => setCalculationType('optionInterest')}
-										/>
-										<span>Interest Only </span>
-									</label>
+									<div className= "radioRepayment">
+										<label>
+											<input
+												type="radio"
+												name="calculationType"
+												value="optionRepayment"
+												checked={calculationType === 'optionRepayment'}
+												onChange={() => setCalculationType('optionRepayment')}
+											/>
+											<span>Repayment </span>
+										</label>
+									</div>
+									<div className= "radioInterest">
+										<label>
+											<input
+												type="radio"
+												name="calculationType"
+												value="optionInterest"
+												checked={calculationType === 'optionInterest'}
+												onChange={() => setCalculationType('optionInterest')}
+											/>
+											<span>Interest Only </span>
+										</label>
+									</div>
 									<div className="error-container">
 										{errors.calculationType}
 									</div>
