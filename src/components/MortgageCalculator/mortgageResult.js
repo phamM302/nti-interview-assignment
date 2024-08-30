@@ -14,6 +14,7 @@ const MortgageResult = ({ result, resultTerm }) => {
 
     return (
         <div className="result">
+            <h4 style={{ fontFamily: 'bold' }}> Your Results</h4>
             <p>
                 Your results are shown below based on the information you provided.
                 To adjust the results, edit the form and click "calculate repayments" again.

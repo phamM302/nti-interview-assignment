@@ -19,6 +19,11 @@ const MortgageCalculator = ({ ...props }) => {
 		const data = Object.fromEntries(formData.entries());
 		setFormData(data);
 	};
+	const handleClearAll = () => {
+		if (formRef.current) {
+			formRef.current.reset();
+		}
+	};
 	return (
 		<div>
 			<form
@@ -28,9 +33,18 @@ const MortgageCalculator = ({ ...props }) => {
 			>
 				{/* TAKE IT AWAY! */}
 				<div className="calculation">
-					<h1 style={{ fontFamily: 'bold' }}> Mortgage Calculator</h1>
+					<div style={{ display: 'flex', alignItems: 'center' }}>
+						<h4 style={{ fontFamily: 'bold' }}>Mortgage Calculator</h4>
+						<button 
+							type="button" onClick={handleClearAll}
+							style={{ marginLeft: 'auto' }}>
+							<img src={`/images/clearall.svg`}
+									alt="Clear Button"
+							/>
+						</button>
+					</div>
 					<label>
-						<h2>Mortgage Amount</h2>
+						<h5>Mortgage Amount</h5>
 						<input
 							type="number"
 							name="mortgageAmount"
@@ -38,22 +52,22 @@ const MortgageCalculator = ({ ...props }) => {
 					</label>
 					<div style={{ display: 'flex', alignItems: 'center' }}>
 						<label>
-							<h2>Mortgage Term</h2>
+							<h5>Mortgage Term</h5>
 							<input
 								type="number"
 								name="mortgageTerm"
 							/>
 						</label>
-	
-						<label>
-							<h2>Interest Rate</h2>
+
+						<label style={{ marginLeft: 'auto' }}>
+							<h5>Interest Rate</h5>
 							<input
 								type="number"
 								name="interestRate"
 							/>
 						</label>
 					</div>
-					<h2>Mortgage Type</h2>
+					<h5>Mortgage Type</h5>
 					<label style={{ display: 'flex' }}>
 						<input
 							type="radio"

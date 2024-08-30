@@ -17,18 +17,27 @@
     
     .calculation {
         font-family: 'medium', sans-serif;  
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
+        margin-left: 40px;
+        margin-right: 100px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
     .result {
         font-family: 'medium', sans-serif;  
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
     input[type="radio"] {
         font-family: 'bold', sans-serif; 
         margin-right: 5px;
+    }
+    button {
+        padding: 0;
+        border: none;
+        background: none;
+        stroke: none;
+        outline: none;
     }
 }
